@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="每日清单">
+<meta name="theme-color" content="#ff6fa3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%80%3C/text%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<script>
+/* Standalone storage: keeps everything in this browser (localStorage) with the same API the page uses. */
+(function(){
+  const KEY='xiwen-planner-v1';
+  const SEED=[{"cat": "工作", "date": "2026-10-22", "done": true, "doneAt": "2026-10-22", "note": "确认 Suited 测评做完了没", "tag": "求职", "title": "Moelis – 2026 Leadership Development Program (LA)", "id": "a01"}, {"cat": "工作", "date": "2026-10-29", "done": true, "doneAt": "2026-10-29", "tag": "求职", "title": "Lincoln – 2026 Women in Finance Workshop", "id": "a02"}, {"cat": "工作", "date": "2026-10-30", "done": false, "doneAt": null, "link": "https://www.lincolninternational.com/greenhouse/", "note": "投了就勾掉；没投或不接受 sponsorship 就删掉", "tag": "求职", "title": "Lincoln – 2026 Sophomore Job Shadow", "id": "a03"}, {"cat": "工作", "date": "2026-11-01", "done": false, "doneAt": null, "link": "https://recruiting360.avature.net/candidates/ProjectDetail?projectId=26864", "note": "投了就勾掉", "tag": "求职", "title": "Goldman Sachs – PWM Insight Days", "id": "a04"}, {"cat": "工作", "date": "2026-11-06", "done": false, "doneAt": null, "main": true, "tag": "求职", "title": "Piper Sandler – 2028 IB SA, Energy, Power & Infrastructure", "id": "a05"}, {"cat": "工作", "date": "2026-11-10", "done": false, "doneAt": null, "tag": "求职", "title": "PWP – 2028 IB SA, Houston Energy (TPH)", "id": "a06"}, {"cat": "工作", "date": "2026-11-16", "done": false, "doneAt": null, "note": "偏工程，不合适可删", "tag": "求职", "title": "SIG – Discovery: Trading System Engineer", "id": "a07"}, {"cat": "工作", "date": "2026-11-16", "done": false, "doneAt": null, "tag": "求职", "title": "SIG – Discovery: Quant Trading & Strategy", "id": "a08"}, {"cat": "工作", "date": "2026-11-30", "done": false, "doneAt": null, "tag": "求职", "title": "Yale Investments Office – 2028 Summer Analyst", "id": "a09"}, {"cat": "工作", "date": "2026-11-30", "done": false, "doneAt": null, "tag": "求职", "title": "Bain – 2027 Building Entrepreneurial Leaders (BEL)", "id": "a10"}, {"cat": "工作", "date": "2026-11-30", "done": false, "doneAt": null, "tag": "求职", "title": "Bain – 2027 CREW (Women)", "id": "a11"}, {"cat": "工作", "date": "2026-12-01", "done": false, "doneAt": null, "tag": "求职", "title": "Ardea Partners – NY 2028 Summer Internship", "id": "a12"}, {"cat": "工作", "date": "2026-12-02", "done": false, "doneAt": null, "tag": "求职", "title": "PWP – 2028 Restructuring Advisory SA (NY)", "id": "a13"}, {"cat": "工作", "date": "2027-01-05", "done": false, "doneAt": null, "tag": "求职", "title": "PWP – 2028 US Advisory Summer Analyst", "id": "a14"}, {"cat": "工作", "date": "2027-03-05", "done": false, "doneAt": null, "tag": "求职", "title": "Citadel – Discover Citadel and Citadel Securities", "id": "a15"}, {"cat": "工作", "date": "2027-09-17", "done": false, "doneAt": null, "tag": "求职", "title": "BDO – IB Summer Analyst 2028 (Richmond)", "id": "a16"}, {"cat": "学习", "date": "2026-11-05", "done": false, "doneAt": null, "title": "WRIT 2 写作面谈开始报名", "id": "c02"}, {"cat": "学习", "date": "2026-11-09", "done": false, "doneAt": null, "title": "HIST 87 Plausible Interpretations", "id": "c03"}, {"cat": "学习", "date": "2026-11-09", "done": false, "doneAt": null, "title": "FEMST 80 放映 Paris is Burning", "id": "c04"}, {"cat": "学习", "date": "2026-11-10", "done": false, "doneAt": null, "note": "可以问期中字数不足 300 词会不会扣分、期末怎么准备", "title": "FEMST 80 Wenzel office hour（11:00–13:00 Zoom）", "id": "c05"}, {"cat": "学习", "date": "2026-11-11", "done": false, "doneAt": null, "note": "退伍军人节放假", "title": "WRIT 2 WP2 PB3", "id": "c06"}, {"cat": "学习", "date": "2026-11-16", "done": false, "doneAt": null, "title": "HIST 87 地图测验（这一周内）", "id": "c07"}, {"cat": "学习", "date": "2026-11-17", "done": false, "doneAt": null, "title": "WRIT 2 WP2 同伴互评课", "id": "c08"}, {"cat": "学习", "date": "2026-11-18", "done": false, "doneAt": null, "title": "WRIT 2 WP2 成品稿 + 自评表", "id": "c09"}, {"cat": "学习", "date": "2026-11-18", "done": false, "doneAt": null, "title": "FEMST 80 放映 Pride Denied", "id": "c10"}, {"cat": "学习", "date": "2026-11-19", "done": false, "doneAt": null, "title": "RG ST 3 Daoism 小组展示（和 Dongyu）", "id": "c11"}, {"cat": "学习", "date": "2026-11-23", "done": false, "doneAt": null, "title": "FEMST 80 放映 United in Anger（上）", "id": "c12"}, {"cat": "学习", "date": "2026-11-24", "done": false, "doneAt": null, "title": "WRIT 2 WP3 PB1", "id": "c13"}, {"cat": "学习", "date": "2026-11-30", "done": false, "doneAt": null, "title": "FEMST 80 放映 United in Anger（下）", "id": "c14"}, {"cat": "学习", "date": "2026-12-02", "done": false, "doneAt": null, "title": "FEMST 80 期末考试", "id": "c15"}, {"cat": "学习", "date": "2026-12-03", "done": false, "doneAt": null, "title": "RG ST 3 小组论文 + 加分作业", "id": "c16"}, {"cat": "学习", "date": "2026-12-03", "done": false, "doneAt": null, "title": "WRIT 2 期末作品集展示", "id": "c17"}, {"cat": "学习", "date": "2026-12-04", "done": false, "doneAt": null, "title": "FEMST 80 观影回应", "id": "c18"}, {"cat": "学习", "date": "2026-12-06", "done": false, "doneAt": null, "title": "WRIT 2 WP3 期末作品集", "id": "c19"}, {"cat": "学习", "date": "2026-12-07", "done": false, "doneAt": null, "title": "HIST 87 期末论证作业", "id": "c20"}, {"cat": "学习", "date": "2026-12-07", "done": false, "doneAt": null, "note": "和期中同格式：选 4 个名词解释（60%）+ 20 道选择（40%）", "title": "RG ST 3 期末考试", "id": "c21"}, {"cat": "学习", "date": "2026-10-28", "done": true, "doneAt": "2026-10-28", "title": "FEMST 80 期中", "id": "c22"}, {"cat": "学习", "date": "2026-11-03", "done": true, "doneAt": "2026-11-03", "title": "RG ST 3 期中考试", "id": "c23"}, {"cat": "学习", "date": "2026-10-27", "done": false, "doneAt": null, "note": "交了就勾掉", "title": "WRIT 2 WP2 PB1", "id": "c24"}, {"cat": "私人", "date": "2026-11-03", "done": false, "doneAt": null, "title": "休息一下，期中考完了 🎉", "id": "p01"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "main": true, "note": "滚动录取，越早越好", "order": 1, "tag": "求职", "title": "Morgan Stanley – 2026 Early Insights Program", "id": "s01"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 2, "tag": "求职", "title": "Goldman Sachs – IB Chicago Insight Day", "id": "s02"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 3, "tag": "求职", "title": "Virtu – Women's Winternship", "id": "s03"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 4, "tag": "求职", "title": "Evergreen Services Group – Women in Leadership Summit", "id": "s04"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 5, "tag": "求职", "title": "Rothschild – US 2028 Global Advisory SA", "id": "s05"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 6, "tag": "求职", "title": "LionTree – 2028 US Advisory SA", "id": "s06"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 7, "tag": "求职", "title": "Leerink Partners – 2028 IB SA", "id": "s07"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 8, "tag": "求职", "title": "Raine Group – 2028 SA (New York)", "id": "s08"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 9, "tag": "求职", "title": "MTS Partners – 2028 IB SA", "id": "s09"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 10, "tag": "求职", "title": "Alvarez & Marsal – Restructuring SA 2028", "id": "s10"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 11, "tag": "求职", "title": "Plante Moran – 2028 PMCF Investment SA", "id": "s11"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 12, "tag": "求职", "title": "JPMorgan Private Bank – Morning@Morgan", "id": "s12"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 13, "tag": "求职", "title": "KKR – See Yourself Here Webinar", "id": "s13"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 14, "tag": "求职", "title": "Ardian – Secondaries & Primaries Intern 2028", "id": "s14"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 15, "tag": "求职", "title": "Arena Investors – Summer Investment Analyst 2028", "id": "s15"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 16, "tag": "求职", "title": "Baird – Equities S&T Shadow Week (Milwaukee)", "id": "s16"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 17, "tag": "求职", "title": "CohnReznick – ACE Program (LA)", "id": "s17"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 18, "tag": "求职", "title": "CohnReznick – ACE Engage (Baltimore)", "id": "s18"}, {"cat": "工作", "date": "2026-10-29", "done": true, "doneAt": "2026-10-29", "tag": "实习", "title": "Cisco Q4 FY2026 slide 交给 Marc", "id": "w01"}, {"cat": "工作", "date": "2026-10-29", "done": true, "doneAt": "2026-10-29", "tag": "实习", "title": "Dell Q2 FY2027 slide 交给 Marc", "id": "w02"}, {"cat": "工作", "date": "2026-11-05", "done": false, "doneAt": null, "main": true, "tag": "实习", "title": "Lumentum 发 Q1 FY2027 财报（2pm PT），之后开始做 slide", "id": "w03"}, {"cat": "工作", "date": "2026-11-12", "done": false, "doneAt": null, "tag": "实习", "title": "Cisco Q1 FY2027 财报电话会（1:30pm PT），问 Marc 要不要更新 slide", "id": "w04"}, {"cat": "工作", "date": null, "done": false, "doneAt": null, "order": 1, "tag": "实习", "title": "等 Marc 回复章节号（slide 上的 XX）和新任务", "id": "w05"}, {"id": "c01", "title": "WRIT 2 WP2 PB2", "date": "2026-11-04", "cat": "学习", "main": true, "done": false, "doneAt": null}];
+  let store;try{store=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){store=null}
+  if(!store){store={tasks:{},ledger:{}};for(const t of SEED){const{id,...d}=t;store.tasks[id]=d}}
+  const subs={tasks:[],ledger:[]};
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(store))}catch(e){}}
+  function emit(c){const docs=Object.entries(store[c]).map(([id,d])=>({id,exists:true,data:()=>d}));subs[c].forEach(f=>f({docs,size:docs.length,empty:!docs.length,metadata:{fromCache:false,hasPendingWrites:false}}))}
+  function coll(c){return{
+    onSnapshot(next){subs[c].push(next);setTimeout(()=>emit(c),0);return()=>{subs[c]=subs[c].filter(f=>f!==next)}},
+    doc(id){id=id||('x'+Date.now().toString(36)+Math.random().toString(36).slice(2,7));return{id,
+      async set(d){store[c][id]=JSON.parse(JSON.stringify(d));save();emit(c)},
+      async update(d){store[c][id]=Object.assign({},store[c][id],d);save();emit(c)},
+      async delete(){delete store[c][id];save();emit(c)}}}}}
+  window.claude={use:async(n)=>n==='db'?{collection:coll}:null};
+  save();
+})();
+</script>
+</head><body>
+<title>Xiwen 每日清单</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=ZCOOL+KuaiLe&family=Fredoka:wght@500;600&display=swap">
+<style>
+/* Layout: one narrow planner column — module tabs (清单 / 记账), then time-ordered sections; 记账 is a month ledger with totals and category bars */
+:root{
+  --bg:#f5f6f9; --card:#ffffff; --ink:#17203a; --muted:#646c82; --line:#e1e4ec;
+  --accent:#2f4fd6; --accent-ink:#ffffff; --hl:#fff1a8; --star:#d99a00;
+  --warn:#c2410c; --warn-bg:#fff1e8; --good:#0f7a55;
+  --c-study:#2f4fd6; --c-study-bg:#e8ecff;
+  --c-work:#b45309; --c-work-bg:#fdf0dc;
+  --c-life:#9d2f8c; --c-life-bg:#fbe7f6;
+  --c-tag:#0f7a55; --c-tag-bg:#e2f5ec;
+  --f-body:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11141d; --card:#1a1e2a; --ink:#e7e9f2; --muted:#9aa1b5; --line:#2b3142;
+  --accent:#7d95ff; --accent-ink:#0e1220; --hl:#4a4318; --star:#f5c542;
+  --warn:#ff9a62; --warn-bg:#3a2216; --good:#6fd6a8;
+  --c-study:#9fb1ff; --c-study-bg:#232c52;
+  --c-work:#f3b76b; --c-work-bg:#3a2a14;
+  --c-life:#f0a1e2; --c-life-bg:#3b1d36;
+  --c-tag:#6fd6a8; --c-tag-bg:#16362a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11141d; --card:#1a1e2a; --ink:#e7e9f2; --muted:#9aa1b5; --line:#2b3142;
+  --accent:#7d95ff; --accent-ink:#0e1220; --hl:#4a4318; --star:#f5c542;
+  --warn:#ff9a62; --warn-bg:#3a2216; --good:#6fd6a8;
+  --c-study:#9fb1ff; --c-study-bg:#232c52;
+  --c-work:#f3b76b; --c-work-bg:#3a2a14;
+  --c-life:#f0a1e2; --c-life-bg:#3b1d36;
+  --c-tag:#6fd6a8; --c-tag-bg:#16362a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:20px}
+header{display:flex;flex-direction:column;gap:4px}
+.eyebrow{font-size:12px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+h1{margin:0;font-size:26px;font-weight:700;text-wrap:balance}
+h1 mark{background:linear-gradient(transparent 55%,var(--hl) 55%);color:inherit;padding:0 2px}
+.modules{display:grid;grid-template-columns:1fr 1fr;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px;gap:4px}
+.modules button{font:inherit;font-weight:500;border:0;border-radius:9px;padding:8px;background:none;color:var(--muted);cursor:pointer}
+.modules button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.summary{display:flex;flex-wrap:wrap;gap:8px}
+.pill{font-size:13px;padding:3px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--muted)}
+.pill b{color:var(--ink);font-variant-numeric:tabular-nums}
+.pill.warn{border-color:transparent;background:var(--warn-bg);color:var(--warn)}
+.pill.warn b{color:var(--warn)}
+form.add{display:grid;grid-template-columns:1fr auto auto auto;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}
+form.add input,form.add select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+form.add button{font:inherit;font-weight:500;background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+form.add label.mainchk{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);grid-column:1/-1}
+form.ledger-add{grid-template-columns:auto 1fr 1fr auto}
+@media (max-width:560px){form.add{grid-template-columns:1fr 1fr}form.add .wide{grid-column:1/-1}form.add button{grid-column:1/-1}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;padding:4px 12px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+section{display:flex;flex-direction:column;gap:8px}
+section > h2,.h2{margin:0;font-size:14px;font-weight:700;display:flex;align-items:baseline;gap:8px}
+.n{font-family:var(--f-mono);font-size:12px;color:var(--muted);font-weight:500}
+section.overdue > h2{color:var(--warn)}
+section.main{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+section.main > h2{color:var(--star)}
+section.main li.task{background:var(--bg)}
+.hint{font-size:12px;color:var(--muted);margin:0}
+.daylabel{font-size:12px;color:var(--muted);margin-top:6px;font-family:var(--f-mono)}
+ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+li.task{display:grid;grid-template-columns:auto 1fr auto auto;gap:8px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+section.overdue li.task{border-left:3px solid var(--warn)}
+li.task.done .title{color:var(--muted);text-decoration:line-through}
+.check{appearance:none;width:20px;height:20px;border:2px solid var(--muted);border-radius:6px;margin:2px 0 0;cursor:pointer;display:grid;place-content:center;background:var(--card)}
+.check:checked{background:var(--accent);border-color:var(--accent)}
+.check:checked::after{content:"";width:6px;height:11px;border:solid var(--accent-ink);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.body{min-width:0;display:flex;flex-direction:column;gap:3px}
+.title{overflow-wrap:anywhere}
+.meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:var(--muted)}
+.chip{font-size:11px;padding:1px 8px;border-radius:999px;font-weight:500}
+.chip.学习{color:var(--c-study);background:var(--c-study-bg)}
+.chip.工作{color:var(--c-work);background:var(--c-work-bg)}
+.chip.私人{color:var(--c-life);background:var(--c-life-bg)}
+.chip.tag{color:var(--c-tag);background:var(--c-tag-bg)}
+.due{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.due.soon{color:var(--warn);font-weight:500}
+.meta a{color:var(--accent)}
+.note{font-size:12px;color:var(--muted)}
+.icon-btn{font:inherit;font-size:12px;background:none;border:0;color:var(--muted);cursor:pointer;padding:2px 4px;border-radius:6px;white-space:nowrap}
+.icon-btn.star{font-size:16px;line-height:1}
+.icon-btn.star.on{color:var(--star)}
+.icon-btn.confirm{color:var(--warn);background:var(--warn-bg)}
+details > summary{cursor:pointer;font-size:14px;font-weight:700;list-style:none;display:flex;gap:8px;align-items:baseline}
+details > summary::-webkit-details-marker{display:none}
+details > summary::before{content:"▸";color:var(--muted)}
+details[open] > summary::before{content:"▾"}
+details > ul{margin-top:8px}
+.state{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:18px;color:var(--muted);text-align:center}
+.footer{font-size:12px;color:var(--muted)}
+/* ledger */
+.monthbar{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.monthbar button{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:4px 12px;cursor:pointer}
+.monthbar strong{font-size:18px}
+.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tot{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.tot span{font-size:12px;color:var(--muted)}
+.tot b{font-family:var(--f-mono);font-size:18px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.tot.out b{color:var(--warn)} .tot.in b{color:var(--good)}
+.bars{display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+.bar{display:grid;grid-template-columns:4.5em 1fr auto;gap:8px;align-items:center;font-size:13px}
+.bar .track{height:8px;background:var(--bg);border-radius:4px;overflow:hidden}
+.bar .fill{height:100%;background:var(--accent);border-radius:4px}
+.bar .amt{font-family:var(--f-mono);font-variant-numeric:tabular-nums;color:var(--muted)}
+li.entry{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+li.entry .d{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+li.entry .amt{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-weight:500}
+li.entry .amt.out{color:var(--warn)} li.entry .amt.in{color:var(--good)}
+@media (prefers-reduced-motion:no-preference){li.task,.bar .fill{transition:all .2s}}
+</style>
+<style>
+/* Kawaii pastel theme: candy pink + lavender + mint + butter, polka-dot paper, ribbon header, heart checkboxes */
+:root{
+  --bg:#fff4f8; --dot:#ffd9e6; --card:#ffffff; --ink:#5a3a4a; --muted:#a07a8c; --line:#ffd1e0;
+  --accent:#ff6fa3; --accent-ink:#ffffff; --hl:#ffe9a8; --star:#ffb300;
+  --warn:#e8546f; --warn-bg:#ffe5ea; --good:#38b58a;
+  --c-study:#7a6ae0; --c-study-bg:#efeaff;
+  --c-work:#e07a2f; --c-work-bg:#fff0dc;
+  --c-life:#e0548f; --c-life-bg:#ffe6f0;
+  --c-tag:#2f9e7a; --c-tag-bg:#dcf7ec;
+  --shadow:0 3px 0 #ffd1e0;
+  --f-display:"ZCOOL KuaiLe","Noto Sans SC","PingFang SC",system-ui,sans-serif;
+  --f-mono:"Fredoka","Noto Sans SC",ui-rounded,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#2a1d2c; --dot:#3a2840; --card:#36263a; --ink:#ffe6f0; --muted:#d3a8c0; --line:#55395a;
+  --accent:#ff8fbb; --accent-ink:#2a1d2c; --hl:#6b4a2a; --star:#ffd257;
+  --warn:#ff8a9e; --warn-bg:#4a2632; --good:#7fe0bb;
+  --c-study:#c2b6ff; --c-study-bg:#3d3360;
+  --c-work:#ffc07f; --c-work-bg:#4a3322;
+  --c-life:#ff9ec6; --c-life-bg:#4d2840;
+  --c-tag:#86e3c0; --c-tag-bg:#1f4438;
+  --shadow:0 3px 0 #1d131f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#2a1d2c; --dot:#3a2840; --card:#36263a; --ink:#ffe6f0; --muted:#d3a8c0; --line:#55395a;
+  --accent:#ff8fbb; --accent-ink:#2a1d2c; --hl:#6b4a2a; --star:#ffd257;
+  --warn:#ff8a9e; --warn-bg:#4a2632; --good:#7fe0bb;
+  --c-study:#c2b6ff; --c-study-bg:#3d3360;
+  --c-work:#ffc07f; --c-work-bg:#4a3322;
+  --c-life:#ff9ec6; --c-life-bg:#4d2840;
+  --c-tag:#86e3c0; --c-tag-bg:#1f4438;
+  --shadow:0 3px 0 #1d131f; color-scheme:dark}
+body{background-color:var(--bg);background-image:radial-gradient(var(--dot) 2.5px,transparent 3px);background-size:26px 26px}
+.eyebrow{font-family:var(--f-mono);letter-spacing:.12em;color:var(--accent)}
+header{position:relative;align-items:center;text-align:center;background:var(--card);border:2px solid var(--line);border-radius:28px;padding:30px 16px 18px;box-shadow:var(--shadow);margin-top:14px}
+.bow{position:absolute;top:-22px;left:50%;transform:translateX(-50%);width:76px;height:44px}
+h1{font-family:var(--f-display);font-weight:400;font-size:30px;letter-spacing:.02em}
+h1 mark{background:linear-gradient(transparent 58%,var(--hl) 58%)}
+.sub{font-size:13px;color:var(--muted)}
+.modules{border:2px solid var(--line);border-radius:999px;padding:5px;box-shadow:var(--shadow)}
+.modules button{font-family:var(--f-display);font-size:17px;font-weight:400;border-radius:999px}
+.modules button[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.pill{border:2px solid var(--line);font-family:var(--f-mono);font-weight:500}
+.pill b{font-family:var(--f-mono);font-weight:600}
+form.add{border:2px dashed var(--line);border-radius:22px;padding:12px}
+form.add input,form.add select{border:2px solid var(--line);border-radius:14px;background:var(--bg)}
+form.add button{font-family:var(--f-display);font-size:16px;font-weight:400;border-radius:999px;box-shadow:0 3px 0 color-mix(in srgb,var(--accent) 60%,#000 20%)}
+form.add button:active{transform:translateY(2px);box-shadow:none}
+.tabs button{border:2px solid var(--line);font-weight:500}
+.tabs button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+section > h2,.h2,details > summary{font-family:var(--f-display);font-weight:400;font-size:18px}
+.n{font-family:var(--f-mono);background:var(--card);border:2px solid var(--line);border-radius:999px;padding:0 8px;font-size:12px;color:var(--accent)}
+section.main{border:2px solid var(--star);border-radius:24px;padding:14px;box-shadow:0 3px 0 color-mix(in srgb,var(--star) 45%,transparent);background:var(--card)}
+section.main > h2{color:var(--ink)}
+section.main > h2::before{content:"⭐";}
+section.main li.task{background:color-mix(in srgb,var(--hl) 35%,var(--card))}
+.daylabel{font-family:var(--f-mono);color:var(--accent);font-weight:500}
+li.task{border:2px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+section.overdue li.task{border-left:2px solid var(--line);border-color:var(--warn)}
+.check{width:24px;height:24px;border:none;border-radius:0;background:none;position:relative}
+.check::before{content:"♡";font-size:22px;line-height:24px;color:var(--accent);display:block;text-align:center;width:24px}
+.check:checked{background:none}
+.check:checked::before{content:"♥"}
+.check:checked::after{content:none}
+.chip{border-radius:999px;font-weight:600;padding:1px 9px}
+.due{font-family:var(--f-mono);font-weight:500}
+.icon-btn.star{font-size:18px}
+.icon-btn.confirm{border-radius:999px}
+details > summary::before{content:"🎀";font-size:14px}
+details[open] > summary::before{content:"🎀"}
+.state{border:2px dashed var(--line);border-radius:22px;background:var(--card)}
+.monthbar strong{font-family:var(--f-display);font-weight:400;font-size:22px}
+.monthbar button{border:2px solid var(--line);border-radius:999px;font-family:var(--f-mono);font-size:16px}
+.tot{border:2px solid var(--line);border-radius:20px;box-shadow:var(--shadow);align-items:center;text-align:center}
+.tot b{font-family:var(--f-mono);font-weight:600}
+.bars{border:2px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
+.bar .track{height:12px;border-radius:999px;background:var(--bg)}
+.bar .fill{border-radius:999px;background:repeating-linear-gradient(45deg,var(--accent) 0 8px,color-mix(in srgb,var(--accent) 75%,var(--card)) 8px 16px)}
+li.entry{border:2px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.footer{text-align:center}
+/* branches (支线) */
+:root{
+  --b0:#7a6ae0;--b0bg:#efeaff; --b1:#2f8fd6;--b1bg:#e2f1ff; --b2:#e07a2f;--b2bg:#fff0dc;
+  --b3:#2f9e7a;--b3bg:#dcf7ec; --b4:#c8509e;--b4bg:#ffe3f3; --b5:#d4627a;--b5bg:#ffe8ec;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --b0:#c2b6ff;--b0bg:#3d3360; --b1:#9fd0ff;--b1bg:#22384f; --b2:#ffc07f;--b2bg:#4a3322;
+  --b3:#86e3c0;--b3bg:#1f4438; --b4:#ffa8dc;--b4bg:#4b2441; --b5:#ffa3b5;--b5bg:#4a2632}}
+:root[data-theme="dark"]{
+  --b0:#c2b6ff;--b0bg:#3d3360; --b1:#9fd0ff;--b1bg:#22384f; --b2:#ffc07f;--b2bg:#4a3322;
+  --b3:#86e3c0;--b3bg:#1f4438; --b4:#ffa8dc;--b4bg:#4b2441; --b5:#ffa3b5;--b5bg:#4a2632}
+.chip.b0{color:var(--b0);background:var(--b0bg)} .chip.b1{color:var(--b1);background:var(--b1bg)}
+.chip.b2{color:var(--b2);background:var(--b2bg)} .chip.b3{color:var(--b3);background:var(--b3bg)}
+.chip.b4{color:var(--b4);background:var(--b4bg)} .chip.b5{color:var(--b5);background:var(--b5bg)}
+.quests{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.quest{font:inherit;text-align:left;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto auto;column-gap:8px;row-gap:1px;align-items:center;background:var(--card);border:2px solid var(--line);border-radius:20px;padding:10px 12px;color:var(--ink);cursor:pointer;box-shadow:var(--shadow);min-width:0}
+.quest .qe{grid-row:1/3;font-size:24px}
+.quest .qn{font-family:var(--f-display);font-size:17px;line-height:1.2}
+.quest .qd{font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.quest .ql{grid-column:1/-1;font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-top:4px}
+.quest[aria-pressed="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--card))}
+.quest.b0[aria-pressed="true"]{border-color:var(--b0)} .quest.b1[aria-pressed="true"]{border-color:var(--b1)}
+.quest.b2[aria-pressed="true"]{border-color:var(--b2)} .quest.b3[aria-pressed="true"]{border-color:var(--b3)}
+.quest.b4[aria-pressed="true"]{border-color:var(--b4)} .quest.b5[aria-pressed="true"]{border-color:var(--b5)}
+/* game progress bars */
+.pbar{position:relative;height:12px;border-radius:999px;background:var(--bg);border:2px solid var(--line);overflow:hidden;flex:1;min-width:0}
+.pbar.big{height:18px}
+.pfill{height:100%;width:0;border-radius:999px;background:repeating-linear-gradient(45deg,var(--pc,var(--accent)) 0 8px,color-mix(in srgb,var(--pc,var(--accent)) 70%,#fff) 8px 16px);box-shadow:inset 0 -3px 0 rgba(0,0,0,.08)}
+.pfill::after{content:"";display:block;height:35%;margin:2px 6px 0;border-radius:999px;background:rgba(255,255,255,.45)}
+@media (prefers-reduced-motion:no-preference){.pfill{transition:width .6s cubic-bezier(.3,1.4,.5,1)}}
+.qprog{grid-column:1/-1;display:flex;align-items:center;gap:8px;margin-top:6px}
+.qpct{font-family:var(--f-mono);font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
+.quest.b0{--pc:var(--b0)} .quest.b1{--pc:var(--b1)} .quest.b2{--pc:var(--b2)} .quest.b3{--pc:var(--b3)} .quest.b4{--pc:var(--b4)} .quest.b5{--pc:var(--b5)}
+.quest.clear{border-color:var(--star)}
+.quest.clear .ql{color:var(--star);font-weight:600}
+.pbar.gold{--pc:var(--star)}
+.xp{width:100%;max-width:420px;display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.xp-top{display:flex;justify-content:space-between;align-items:baseline}
+.lv{font-family:var(--f-mono);font-weight:600;font-size:15px;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:1px 12px}
+.xp-num{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.xp-hint{font-size:11px;color:var(--muted)}
+#xp .pfill{--pc:var(--accent)}
+/* dialog & toast */
+.dlg-back{position:fixed;inset:0;z-index:50;background:color-mix(in srgb,var(--ink) 35%,transparent);display:grid;place-items:center;padding:16px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.dlg{position:relative;width:min(360px,100%);background:var(--card);border:2px solid var(--line);border-radius:26px;padding:28px 20px 18px;text-align:center;box-shadow:0 6px 0 var(--line)}
+.dlg-bow{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:34px}
+.dlg h3{margin:0 0 6px;font-family:var(--f-display);font-weight:400;font-size:22px}
+.dlg p{margin:0 0 16px;color:var(--muted);overflow-wrap:anywhere}
+.dlg-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dlg-btns button{font:inherit;font-family:var(--f-display);font-size:16px;border-radius:999px;padding:10px;cursor:pointer;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+#dlg-ok{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+#dlg-ok.danger{background:var(--warn);border-color:var(--warn)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--card);border:2px solid var(--star);border-radius:20px;padding:10px 18px;display:flex;flex-direction:column;align-items:center;gap:2px;box-shadow:0 4px 0 color-mix(in srgb,var(--star) 40%,transparent);max-width:calc(100% - 32px)}
+.toast b{font-family:var(--f-display);font-weight:400;font-size:18px;color:var(--ink)}
+.toast span{font-size:13px;color:var(--muted)}
+/* page nav + hero */
+.nav{display:flex;gap:6px;overflow-x:auto;padding:4px;background:var(--card);border:2px solid var(--line);border-radius:22px;box-shadow:var(--shadow);scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav button{flex:0 0 auto;font:inherit;font-family:var(--f-display);font-size:15px;display:flex;align-items:center;gap:4px;border:0;border-radius:999px;padding:7px 12px;background:none;color:var(--muted);cursor:pointer;white-space:nowrap}
+.nav button[aria-current="page"]{background:var(--accent);color:var(--accent-ink)}
+.hero{display:flex;flex-direction:column;gap:6px}
+.hero .ph{margin:0;font-family:var(--f-display);font-weight:400;font-size:24px}
+.hero .pd{margin:0;font-size:13px;color:var(--muted)}
+.hero.b0{--pc:var(--b0)} .hero.b1{--pc:var(--b1)} .hero.b2{--pc:var(--b2)} .hero.b3{--pc:var(--b3)} .hero.b4{--pc:var(--b4)} .hero.b5{--pc:var(--b5)}
+/* detail page */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;background:var(--card);border:2px solid var(--line);border-radius:999px;padding:6px 8px;box-shadow:var(--shadow)}
+body.detail::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+#back{font:inherit;font-family:var(--f-display);font-size:16px;border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:6px 14px;cursor:pointer}
+#tb-title{font-family:var(--f-display);font-size:20px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tb-spacer{width:64px}
+.topbar.b0{border-color:var(--b0)} .topbar.b1{border-color:var(--b1)} .topbar.b2{border-color:var(--b2)} .topbar.b3{border-color:var(--b3)} .topbar.b4{border-color:var(--b4)} .topbar.b5{border-color:var(--b5)}
+.hero.b0,.hero.b1,.hero.b2,.hero.b3,.hero.b4,.hero.b5{background:var(--card);border:2px solid var(--pc);border-radius:24px;padding:16px;box-shadow:var(--shadow)}
+@media (prefers-reduced-motion:no-preference){
+  .enter{animation:slideIn .32s cubic-bezier(.2,.9,.3,1.15)}
+  .enter-back{animation:slideBack .28s ease-out}
+  .enter-fade{animation:fadeIn .2s ease-out}
+  @keyframes slideIn{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+  @keyframes slideBack{from{transform:translateX(-40px);opacity:0}to{transform:none;opacity:1}}
+  @keyframes fadeIn{from{opacity:.4}to{opacity:1}}
+  .quest{transition:transform .15s}
+  .quest:hover{transform:translateY(-2px)}
+  .quest:active{transform:scale(.97)}
+}
+.quest .go{position:absolute;right:12px;top:10px;font-size:18px;color:var(--muted)}
+.quest{position:relative}
+[hidden]{display:none!important}
+#add-form{order:9}
+#todo .footer{order:10}
+#add-form::before{content:"✿ 加一件新任务";grid-column:1/-1;font-family:var(--f-display);font-size:16px;color:var(--muted)}
+</style>
+
+<div class="wrap">
+  <div class="topbar" id="topbar" hidden>
+    <button type="button" id="back" aria-label="返回今天">‹ 今天</button>
+    <span id="tb-title"></span>
+    <span class="tb-spacer"></span>
+  </div>
+  <header id="main-head">
+    <svg class="bow" viewBox="0 0 76 44" aria-hidden="true">
+      <path d="M38 22 C26 6 6 4 6 20 C6 36 26 36 38 22 Z" fill="var(--accent)" stroke="var(--ink)" stroke-opacity=".25" stroke-width="2"/>
+      <path d="M38 22 C50 6 70 4 70 20 C70 36 50 36 38 22 Z" fill="var(--accent)" stroke="var(--ink)" stroke-opacity=".25" stroke-width="2"/>
+      <path d="M33 24 L26 42 L34 38 L38 42 L40 26 Z M43 24 L50 42 L42 38 L38 42 L36 26 Z" fill="var(--accent)" opacity=".8"/>
+      <circle cx="38" cy="22" r="7" fill="var(--card)" stroke="var(--accent)" stroke-width="3"/>
+      <circle cx="16" cy="18" r="2" fill="var(--card)" opacity=".8"/><circle cx="60" cy="18" r="2" fill="var(--card)" opacity=".8"/>
+    </svg>
+    <div class="eyebrow">UCSB · Fall 2026 ♡</div>
+    <h1 id="today-h">今天</h1>
+    <div class="sub">今天也要元气满满 ✿</div>
+    <div class="xp" id="xp" aria-live="polite">
+      <div class="xp-top"><span class="lv" id="xp-lv">Lv.1</span><span class="xp-num" id="xp-num">0 / 50 XP</span></div>
+      <div class="pbar big" role="progressbar" aria-label="升级进度" id="xp-bar-wrap" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="pfill" id="xp-bar"></div></div>
+      <div class="xp-hint">每完成一件 +10 XP，主线任务 +30 XP ⭐</div>
+    </div>
+  </header>
+
+  <nav class="nav" id="nav" aria-label="页面"></nav>
+
+  <!-- TODO MODULE -->
+  <div id="todo" style="display:flex;flex-direction:column;gap:20px">
+    <div class="hero" id="hero"></div>
+    <div class="summary" id="summary"></div>
+
+    <form class="add" id="add-form" autocomplete="off">
+      <input id="t-title" class="wide" placeholder="加一件事，比如：投 Morgan Stanley" aria-label="事项" required>
+      <input id="t-date" type="date" aria-label="日期（可不填）">
+      <select id="t-cat" aria-label="支线"><option>课程</option><option>转学</option><option>实习</option><option>DBC求职</option><option>LGBTQ实习</option><option>私人</option></select>
+      <button type="submit" id="t-add">添加</button>
+      <label class="mainchk"><input type="checkbox" id="t-main"> 设为本周主线（必做）</label>
+    </form>
+
+
+    <div id="board"><div class="state" id="state">正在加载你的清单…</div></div>
+    <p class="footer">点 ☆ 把一件事设为本周必做。勾选后自动保存在这个浏览器里（换设备不会同步）。</p>
+  </div>
+
+  <!-- MONEY MODULE -->
+  <div id="money" hidden style="display:flex;flex-direction:column;gap:16px">
+    <div class="monthbar">
+      <button type="button" id="mprev" aria-label="上个月">‹</button>
+      <strong id="mlabel"></strong>
+      <button type="button" id="mnext" aria-label="下个月">›</button>
+    </div>
+    <div class="totals">
+      <div class="tot out"><span>支出</span><b id="tot-out">$0</b></div>
+      <div class="tot in"><span>收入</span><b id="tot-in">$0</b></div>
+      <div class="tot"><span>结余</span><b id="tot-bal">$0</b></div>
+    </div>
+    <form class="add ledger-add" id="l-form" autocomplete="off">
+      <select id="l-type" aria-label="收支"><option>支出</option><option>收入</option></select>
+      <input id="l-amt" type="number" inputmode="decimal" step="0.01" min="0" placeholder="金额 USD" aria-label="金额" required>
+      <select id="l-cat" aria-label="分类">
+        <option>餐饮</option><option>咖啡奶茶</option><option>交通</option><option>购物</option><option>房租水电</option><option>学习</option><option>娱乐</option><option>生活用品</option><option>其他</option>
+      </select>
+      <input id="l-date" type="date" aria-label="日期">
+      <input id="l-note" class="wide" placeholder="备注（可不填），比如：Starbucks" aria-label="备注">
+      <button type="submit">记一笔</button>
+    </form>
+    <div id="l-bars"></div>
+    <div id="l-list"></div>
+  </div>
+</div>
+
+<div class="dlg-back" id="dlg" hidden>
+  <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="dlg-title">
+    <div class="dlg-bow" aria-hidden="true">🎀</div>
+    <h3 id="dlg-title">完成了吗？</h3>
+    <p id="dlg-msg"></p>
+    <div class="dlg-btns"><button type="button" id="dlg-no">还没</button><button type="button" id="dlg-ok">确定完成 ✓</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script>
+const $=s=>document.querySelector(s);
+const WEEK=['周日','周一','周二','周三','周四','周五','周六'];
+let tasks=[],col=null,ledger=null,entries=[],pendingDel=null,pendingDelL=null;
+function ymd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function parse(s){const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)}
+const now=new Date(),todayStr=ymd(now);
+const wkStart=(()=>{const d=new Date(now);const k=(d.getDay()+6)%7;d.setDate(d.getDate()-k);return ymd(d)})();
+const wkEnd=(()=>{const d=parse(wkStart);d.setDate(d.getDate()+6);return ymd(d)})();
+function diffDays(s){return Math.round((parse(s)-parse(todayStr))/86400000)}
+function fmtDay(s){const d=parse(s);return(d.getMonth()+1)+'月'+d.getDate()+'日 '+WEEK[d.getDay()]}
+function rel(s){const n=diffDays(s);if(n===0)return'今天';if(n===1)return'明天';if(n===-1)return'昨天';if(n<0)return'过了'+(-n)+'天';return'还有'+n+'天'}
+const BRANCHES=[
+  {k:'课程',e:'📚',d:'UCSB 四门课'},
+  {k:'转学',e:'🏫',d:'转学申请'},
+  {k:'实习',e:'💼',d:'Marc · The Amazing Group'},
+  {k:'DBC求职',e:'🎯',d:'顾问 Zoe 的 tracker'},
+  {k:'LGBTQ实习',e:'🌈',d:'学校 RCSGD'},
+  {k:'私人',e:'🍓',d:'生活 & 自己的事'}];
+const BI=Object.fromEntries(BRANCHES.map((b,i)=>[b.k,i]));
+function catOf(t){
+  if(t.branch&&t.branch in BI)return t.branch;
+  if(t.cat in BI)return t.cat;
+  if(t.cat==='学习')return'课程';
+  if(t.tag==='求职'||t.cat==='实习申请')return'DBC求职';
+  if(t.tag==='实习'||t.cat==='实习工作'||t.cat==='工作')return'实习';
+  return'私人';
+}
+$('#today-h').innerHTML='今天是 <mark>'+(now.getMonth()+1)+'月'+now.getDate()+'日 '+WEEK[now.getDay()]+'</mark>';
+function el(tag,attrs={},kids=[]){const e=document.createElement(tag);for(const[k,v]of Object.entries(attrs)){if(k==='class')e.className=v;else if(k==='text')e.textContent=v;else e.setAttribute(k,v)}for(const c of[].concat(kids))if(c)e.append(c);return e}
+function showErr(where,m){const s=el('div',{class:'state',text:m});$(where).prepend(s);setTimeout(()=>s.remove(),4000)}
+
+/* ---------- pages ---------- */
+let view='today',loaded=false;
+const PAGES=[{k:'today',e:'📅',n:'今天'}].concat(BRANCHES.map(b=>({k:b.k,e:b.e,n:b.k}))).concat([{k:'money',e:'💰',n:'记账'}]);
+function buildNav(){const nav=$('#nav');nav.textContent='';PAGES.forEach(p=>{const b=el('button',{type:'button','aria-current':view===p.k?'page':'false'},[el('span',{class:'ne',text:p.e}),el('span',{text:p.n})]);b.addEventListener('click',()=>setView(p.k));nav.append(b)})}
+const SLUG={today:'today','课程':'courses','转学':'transfer','实习':'intern','DBC求职':'dbc','LGBTQ实习':'lgbtq','私人':'life',money:'money'};
+const UNSLUG=Object.fromEntries(Object.entries(SLUG).map(([k,v])=>[v,k]));
+function setView(v,fromHash){if(!PAGES.some(p=>p.k===v))v='today';const prev=view;view=v;try{localStorage.setItem('view',v)}catch(e){}
+  const detail=v in BI;
+  document.body.classList.toggle('detail',detail);
+  $('#topbar').hidden=!detail;$('#main-head').hidden=detail;$('#nav').hidden=detail;
+  if(detail){const br=BRANCHES[BI[v]];$('#tb-title').textContent=br.e+' '+br.k;$('#topbar').className='topbar b'+BI[v]}
+  $('#todo').hidden=v==='money';$('#money').hidden=v!=='money';
+  if(detail)$('#t-cat').value=v;else $('#t-cat').value='课程';
+  buildNav();if(v!=='money')render();else renderMoney();
+  const pane=v==='money'?$('#money'):$('#todo');
+  pane.classList.remove('enter','enter-back');void pane.offsetWidth;pane.classList.add(detail?'enter':(prev in BI?'enter-back':'enter-fade'));
+  if(!fromHash){try{if(location.hash.slice(1)!==SLUG[v])location.hash=SLUG[v]}catch(e){}}
+  try{window.scrollTo({top:0})}catch(e){}}
+window.addEventListener('hashchange',()=>{const k=UNSLUG[location.hash.slice(1)]||'today';if(k!==view)setView(k,true)});
+
+/* ---------- todo ---------- */
+function row(t){
+  const c=catOf(t);
+  const li=el('li',{class:'task'+(t.done?' done':'')});
+  const cb=el('input',{type:'checkbox',class:'check',id:'c-'+t.id,'aria-label':'完成：'+t.title});cb.checked=!!t.done;
+  cb.addEventListener('click',e=>{e.preventDefault();
+    if(!t.done)ask('🎀 完成了吗？','确定你已经完成「'+t.title+'」了吗？','确定完成 ✓','还没',()=>{patch(t,{done:true,doneAt:todayStr});celebrate(t)});
+    else ask('撤回完成？','要把「'+t.title+'」改回「还没做完」吗？','改回没做完','不用',()=>patch(t,{done:false,doneAt:null}));
+  });
+  const meta=el('div',{class:'meta'},[el('span',{class:'chip b'+(BI[c]??5),text:(BRANCHES[BI[c]??5].e)+' '+c})]);
+  if(t.date){const n=diffDays(t.date);meta.append(el('span',{class:'due'+(!t.done&&n<=2?' soon':''),text:fmtDay(t.date)+' · '+rel(t.date)}))}
+  else meta.append(el('span',{class:'due',text:'随时可做'}));
+  if(t.link)meta.append(el('a',{href:t.link,target:'_blank',rel:'noopener',text:'打开链接'}));
+  const body=el('div',{class:'body'},[el('span',{class:'title',text:t.title}),meta]);
+  if(t.note)body.append(el('span',{class:'note',text:t.note}));
+  const star=el('button',{type:'button',class:'icon-btn star'+(t.main?' on':''),'aria-label':(t.main?'取消主线：':'设为本周主线：')+t.title,'aria-pressed':String(!!t.main),text:t.main?'★':'☆'});
+  star.addEventListener('click',()=>patch(t,{main:!t.main}));
+  const del=el('button',{type:'button',class:'icon-btn','aria-label':'删除 '+t.title,text:'删除'});
+  del.addEventListener('click',()=>ask('删除这件事？','确定要删除「'+t.title+'」吗？删掉就找不回来了。如果是做完了，请点左边的 ♡ 打勾。','确定删除','不删了',()=>removeTask(t),true));
+  li.append(cb,body,star,del);return li;
+}
+function section(title,list,cls,byDay,hint){
+  if(!list.length&&!hint)return null;
+  const s=el('section',{class:cls||''},[el('h2',{},[document.createTextNode(title),el('span',{class:'n',text:String(list.length)})])]);
+  if(!list.length){s.append(el('p',{class:'hint',text:hint}));return s}
+  if(byDay){let cur,ul;for(const t of list){if(t.date!==cur){cur=t.date;s.append(el('div',{class:'daylabel',text:fmtDay(t.date)+' · '+rel(t.date)}));ul=el('ul');s.append(ul)}ul.append(row(t))}}
+  else{const ul=el('ul');list.forEach(t=>ul.append(row(t)));s.append(ul)}
+  return s;
+}
+function folded(title,list,open){
+  if(!list.length)return null;
+  const d=el('details');if(open)d.open=true;
+  d.append(el('summary',{},[document.createTextNode(title),el('span',{class:'n',text:String(list.length)})]));
+  const ul=el('ul');list.forEach(t=>ul.append(row(t)));d.append(ul);return d;
+}
+function progBar(label,done,tot,cls){const pct=tot?Math.round(done/tot*100):0;
+  return el('div',{class:'qprog'},[el('div',{class:'pbar '+(cls||''),role:'progressbar','aria-label':label,'aria-valuemin':'0','aria-valuemax':'100','aria-valuenow':String(pct)},[el('div',{class:'pfill',style:'width:'+pct+'%'})]),el('span',{class:'qpct',text:tot?(done===tot?'通关 🏆':done+'/'+tot+' · '+pct+'%'):'—'})])}
+function render(){
+  const board=$('#board');board.textContent='';
+  const isToday=view==='today';
+  const vis=isToday?tasks:tasks.filter(t=>catOf(t)===view);
+  const byDate=(a,b)=>(a.date||'9999').localeCompare(b.date||'9999')||(a.title||'').localeCompare(b.title||'');
+  const undone=vis.filter(t=>!t.done).sort(byDate);
+  const mainWk=vis.filter(t=>t.main&&(!t.done||(t.doneAt&&t.doneAt>=wkStart))).sort((a,b)=>(a.done-b.done)||byDate(a,b));
+  const rest=undone.filter(t=>!t.main);
+  const overdue=rest.filter(t=>t.date&&t.date<todayStr);
+  const today=rest.filter(t=>t.date===todayStr);
+  const tomorrow=rest.filter(t=>t.date&&diffDays(t.date)===1);
+  const soon=rest.filter(t=>t.date&&t.date>todayStr&&diffDays(t.date)<=14);
+  const later=rest.filter(t=>t.date&&diffDays(t.date)>14);
+  const anytime=rest.filter(t=>!t.date).sort((a,b)=>(a.order??999)-(b.order??999));
+  const done=vis.filter(t=>t.done&&!(t.main&&t.doneAt>=wkStart)).sort((a,b)=>(b.doneAt||'').localeCompare(a.doneAt||''));
+  // summary
+  const sm=$('#summary');sm.textContent='';
+  const p=(l,n,w)=>{const e=el('span',{class:'pill'+(w?' warn':'')});e.append(document.createTextNode(l+' '),el('b',{text:String(n)}));sm.append(e)};
+  p('✅ 已完成',vis.filter(t=>t.done).length);p('⏳ 还剩',undone.length);
+  p('⭐ 本周必做还剩',mainWk.filter(t=>!t.done).length);
+  if(overdue.length)p('过期没做完',overdue.length,true);
+  // page hero
+  const hero=$('#hero');hero.textContent='';
+  if(isToday){hero.append(el('h2',{class:'ph',text:'📅 今天要做的'}),el('p',{class:'pd',text:'本周必做、过期没做完的、今天和明天的事都在这一页。其他的去上面各条主线看。'}))}
+  else{const br=BRANCHES[BI[view]];const all=vis,dn=all.filter(t=>t.done).length;
+    hero.className='hero b'+BI[view];
+    hero.append(el('h2',{class:'ph',text:br.e+' '+br.k+' 主线'}),el('p',{class:'pd',text:br.d}),progBar(br.k+' 进度',dn,all.length,'big'))}
+  if(isToday)hero.className='hero';
+  if(!loaded){board.append(el('div',{class:'state',text:'正在加载你的清单…'}));renderXP();return}
+  const g=el('div',{style:'display:flex;flex-direction:column;gap:22px'});
+  const mainSec=section((isToday?'本周必做':'本周必做 · '+view)+'（'+fmtDay(wkStart).split(' ')[0]+'–'+fmtDay(wkEnd).split(' ')[0]+'）',mainWk,'main',false,'还没有本周必做。点任意一件事右边的 ☆ 把它设为本周必做。');
+  if(mainWk.length)mainSec.insertBefore(progBar('本周必做进度',mainWk.filter(t=>t.done).length,mainWk.length,'big gold'),mainSec.children[1]);
+  let parts;
+  if(isToday){
+    parts=[mainSec,section('⚠️ 之前没做完的',overdue,'overdue'),section('今天要做',today,'',false,'今天没有到期的事 🎉 可以从各条主线里挑一件先做。'),section('明天',tomorrow)];
+  }else{
+    parts=[mainSec,section('⚠️ 之前没做完的',overdue,'overdue'),section('今天要做',today),section('接下来两周',soon.filter(t=>t.date!==todayStr),'',true),
+      folded('两周以后',later,true),folded('随时可做 / 随时可投',anytime,true),folded('已完成',done,false)];
+    if(!vis.length)parts.push(el('div',{class:'state',text:'这条主线还没有任务。在上面加第一件事吧 ✿'}));
+  }
+  parts.filter(Boolean).forEach(x=>g.append(x));
+  if(isToday){const qs=el('section',{},[el('h2',{text:'🎮 各条主线进度'})]);const q=el('div',{class:'quests'});qs.append(q);renderQuests(q);g.append(qs)}
+  board.append(g);renderXP();
+}
+function renderQuests(q){
+  BRANCHES.forEach((br,i)=>{
+    const all=tasks.filter(t=>catOf(t)===br.k),dn=all.filter(t=>t.done).length,tot=all.length,left=tot-dn;
+    const nx=all.filter(t=>!t.done&&t.date&&t.date>=todayStr).sort((a,b)=>a.date.localeCompare(b.date))[0];
+    const next=nx?(Number(nx.date.slice(5,7))+'/'+Number(nx.date.slice(8))):null;
+    const pct=tot?Math.round(dn/tot*100):0;
+    const b=el('button',{type:'button',class:'quest b'+i+(tot&&!left?' clear':''),'aria-label':'打开 '+br.k+' 主线'});
+    b.append(el('span',{class:'go','aria-hidden':'true',text:'›'}),el('span',{class:'qe',text:br.e}),el('span',{class:'qn',text:br.k}),el('span',{class:'qd',text:br.d}),
+      el('div',{class:'qprog'},[el('div',{class:'pbar',role:'progressbar','aria-label':br.k+' 进度','aria-valuemin':'0','aria-valuemax':'100','aria-valuenow':String(pct)},[el('div',{class:'pfill',style:'width:'+pct+'%'})]),el('span',{class:'qpct',text:tot?pct+'%':'—'})]),
+      el('span',{class:'ql',text:!tot?'还没有任务':!left?'🏆 主线通关！':(dn+'/'+tot+' · 还剩 '+left+(next?' · 下一件 '+next:''))}));
+    b.addEventListener('click',()=>setView(br.k));q.append(b);
+  });
+}
+function renderXP(){
+  const xp=tasks.filter(t=>t.done).reduce((s,t)=>s+(t.main?30:10),0);
+  const per=50,lv=Math.floor(xp/per)+1,cur=xp%per;
+  $('#xp-lv').textContent='Lv.'+lv;$('#xp-num').textContent=cur+' / '+per+' XP · 总 '+xp;
+  $('#xp-bar').style.width=(cur/per*100)+'%';$('#xp-bar-wrap').setAttribute('aria-valuenow',String(Math.round(cur/per*100)));
+}
+/* confirm dialog + celebration toast */
+let askCb=null;
+function ask(title,msg,okText,noText,onOk,danger){
+  $('#dlg-title').textContent=title;$('#dlg-msg').textContent=msg;
+  const ok=$('#dlg-ok');ok.textContent=okText;ok.classList.toggle('danger',!!danger);$('#dlg-no').textContent=noText;
+  askCb=onOk;$('#dlg').hidden=false;ok.focus();
+}
+function closeAsk(){$('#dlg').hidden=true;askCb=null}
+$('#dlg-ok').addEventListener('click',()=>{const f=askCb;closeAsk();if(f)f()});
+$('#dlg-no').addEventListener('click',closeAsk);
+$('#dlg').addEventListener('click',e=>{if(e.target.id==='dlg')closeAsk()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#dlg').hidden)closeAsk()});
+let toastT=null;
+function celebrate(t){
+  const done=tasks.filter(x=>x.done).length,left=tasks.filter(x=>!x.done).length;
+  const tt=$('#toast');tt.textContent='';
+  tt.append(el('b',{text:'🎉 完成！+'+(t.main?30:10)+' XP'}),el('span',{text:'已经做了 '+done+' 件 · 还剩 '+left+' 件没做'}));
+  tt.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>tt.hidden=true,3200);
+}
+async function patch(t,fields){
+  const old={};for(const k in fields)old[k]=t[k];
+  Object.assign(t,fields);render();
+  if(!col)return;
+  try{await col.doc(t.id).update(fields)}catch(e){Object.assign(t,old);render();showErr('#board','没保存上，请再点一次。')}
+}
+async function removeTask(t){pendingDel=null;tasks=tasks.filter(x=>x.id!==t.id);render();if(col)try{await col.doc(t.id).delete()}catch(e){showErr('#board','没删掉，请刷新后再试。')}}
+$('#add-form').addEventListener('submit',async e=>{
+  e.preventDefault();const title=$('#t-title').value.trim();if(!title)return;
+  const data={title,date:$('#t-date').value||null,branch:$('#t-cat').value,cat:$('#t-cat').value,main:$('#t-main').checked,done:false,doneAt:null,added:todayStr};
+  $('#t-title').value='';$('#t-date').value='';$('#t-main').checked=false;
+  if(!col){tasks.push(Object.assign({id:'local-'+Date.now()},data));render();showErr('#board','现在连不上存储，这条只在这次打开时有效。');return}
+  const ref=col.doc();const t=Object.assign({id:ref.id},data);tasks.push(t);render();
+  try{await ref.set(data)}catch(err){tasks=tasks.filter(x=>x!==t);render();showErr('#board','没加上，请再试一次。')}
+});
+
+/* ---------- money ---------- */
+let viewMonth=todayStr.slice(0,7);
+$('#l-date').value=todayStr;
+const money=n=>(n<0?'-':'')+'$'+Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+function shiftMonth(k){const[y,m]=viewMonth.split('-').map(Number);const d=new Date(y,m-1+k,1);viewMonth=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');renderMoney()}
+$('#mprev').onclick=()=>shiftMonth(-1);$('#mnext').onclick=()=>shiftMonth(1);
+function renderMoney(){
+  const[y,m]=viewMonth.split('-');$('#mlabel').textContent=y+'年'+Number(m)+'月';
+  const list=entries.filter(e=>(e.date||'').startsWith(viewMonth)).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  let out=0,inc=0;const byCat={};
+  for(const e of list){const a=Number(e.amount)||0;if(e.type==='收入')inc+=a;else{out+=a;byCat[e.cat]=(byCat[e.cat]||0)+a}}
+  $('#tot-out').textContent=money(out);$('#tot-in').textContent=money(inc);$('#tot-bal').textContent=money(inc-out);
+  const bars=$('#l-bars');bars.textContent='';
+  const cats=Object.entries(byCat).sort((a,b)=>b[1]-a[1]);
+  if(cats.length){const box=el('div',{class:'bars'},[el('div',{class:'h2',text:'这个月钱花在哪'})]);const max=cats[0][1];
+    for(const[c,a]of cats){const fill=el('div',{class:'fill',style:'width:'+Math.max(3,a/max*100).toFixed(1)+'%'});box.append(el('div',{class:'bar'},[el('span',{text:c}),el('div',{class:'track'},[fill]),el('span',{class:'amt',text:money(a)})]))}
+    bars.append(box)}
+  const L=$('#l-list');L.textContent='';
+  if(!ledger){L.append(el('div',{class:'state',text:'存储打不开了，请检查浏览器设置。'}));return}
+  if(!list.length){L.append(el('div',{class:'state',text:'这个月还没有记账。在上面填金额，点「记一笔」。'}));return}
+  const ul=el('ul');
+  for(const e of list){
+    const isIn=e.type==='收入';
+    const del=el('button',{type:'button',class:'icon-btn','aria-label':'删除这笔',text:pendingDelL===e.id?'确认？':'删除'});
+    if(pendingDelL===e.id)del.classList.add('confirm');
+    del.onclick=async()=>{if(pendingDelL!==e.id){pendingDelL=e.id;renderMoney();return}pendingDelL=null;entries=entries.filter(x=>x.id!==e.id);renderMoney();try{await ledger.doc(e.id).delete()}catch(err){showErr('#l-list','没删掉，请刷新后再试。')}};
+    ul.append(el('li',{class:'entry'},[el('span',{class:'d',text:e.date.slice(5).replace('-','/')}),el('div',{class:'body'},[el('span',{class:'title',text:e.note||e.cat}),el('span',{class:'note',text:(isIn?'收入':'支出')+' · '+e.cat})]),el('span',{class:'amt '+(isIn?'in':'out'),text:(isIn?'+':'-')+money(Number(e.amount)||0)}),del]))
+  }
+  L.append(ul);
+}
+$('#l-type').addEventListener('change',()=>{const s=$('#l-cat');const inc=$('#l-type').value==='收入';s.innerHTML='';(inc?['工资','家里给的','奖学金','退款','其他']:['餐饮','咖啡奶茶','交通','购物','房租水电','学习','娱乐','生活用品','其他']).forEach(o=>s.append(el('option',{text:o})))});
+$('#l-form').addEventListener('submit',async e=>{
+  e.preventDefault();const amt=parseFloat($('#l-amt').value);if(!(amt>0))return;
+  const data={type:$('#l-type').value,amount:Math.round(amt*100)/100,cat:$('#l-cat').value,date:$('#l-date').value||todayStr,note:$('#l-note').value.trim(),added:todayStr};
+  $('#l-amt').value='';$('#l-note').value='';
+  if(!ledger){showErr('#l-list','现在连不上存储，没能保存。');return}
+  const ref=ledger.doc();const item=Object.assign({id:ref.id},data);entries.push(item);viewMonth=data.date.slice(0,7);renderMoney();
+  try{await ref.set(data)}catch(err){entries=entries.filter(x=>x!==item);renderMoney();showErr('#l-list','没记上，请再试一次。')}
+});
+renderMoney();
+
+let v0=UNSLUG[location.hash.slice(1)];if(!v0){v0='today';try{const s=localStorage.getItem('view');if(s==='money')v0='money'}catch(e){}}
+setView(v0,true);
+$('#back').addEventListener('click',()=>{if(history.length>1&&location.hash&&document.referrer!==''){}setView('today')});
+/* ---------- boot ---------- */
+(async()=>{
+  const timer=setTimeout(()=>{const s=$('#state');if(s)s.textContent='暂时连不上你的清单，稍等一下或刷新页面。'},10000);
+  let db=null;try{db=await window.claude?.use?.('db')}catch(e){}
+  if(!db){clearTimeout(timer);$('#board').textContent='';$('#board').append(el('div',{class:'state',text:'存储打不开了，请检查浏览器是否关闭了网站数据。'}));renderMoney();return}
+  col=db.collection('tasks');ledger=db.collection('ledger');
+  col.onSnapshot(snap=>{tasks=snap.docs.map(d=>Object.assign({id:d.id},d.data()));loaded=true;if(!snap.metadata.fromCache)clearTimeout(timer);render()},()=>{clearTimeout(timer);showErr('#board','清单加载出错了，请刷新页面。')});
+  ledger.onSnapshot(snap=>{entries=snap.docs.map(d=>Object.assign({id:d.id},d.data()));renderMoney()},()=>showErr('#l-list','账目加载出错了，请刷新页面。'));
+})();
+</script>
+
+</body></html>
